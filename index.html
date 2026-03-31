@@ -232,7 +232,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
         </div>
         <div>
           <div class="pari-label">Insight</div>
-          <div class="pari-text">Post-hoc tools can be locally consistent <em>and still miss the model's actual reasoning</em>. The right question is not "is this explanation faithful?" — it's <strong>"faithful to what, exactly?"</strong> Using XGBoost-SHAP as a proxy for TFM reasoning is misleading even when SHAP passes the infidelity test.</div>
+          <div class="pari-text">Post-hoc tools can be locally consistent <em>and still miss the model's actual reasoning</em>. Privacy risk analysis maps ICL vulnerabilities to <strong>PDPA obligations (Sections 18, 24, 26) and NIST AI RMF controls</strong> — directly applicable to enterprise AI governance and Privacy Impact Assessments.</div>
         </div>
       </div>
       <a class="flagship-link" href="https://github.com/AdvaithK500/tabpfn-xai-study" target="_blank">View full study + privacy analysis →</a>
@@ -285,7 +285,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
       </div>
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Dead reckoning drifts to 6 cm error over 27 seconds — each turn compounds heading error into position error. Sensors also fail silently: bias drift, EMI spikes, flatlines.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">EKF with arc-based differential-drive kinematics, 100 Hz gyro correction, 20 Hz ultrasonic updates with <strong>3σ outlier gating</strong>. Added online anomaly detector (spike/drift/flatline/noise burst) using rolling z-score and local drift comparison. Welch PSD spectral analysis with Hanning/Blackman/rectangular window comparison.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">EKF with arc-based differential-drive kinematics, 100 Hz gyro correction, 20 Hz ultrasonic updates with <strong>3σ outlier gating</strong>. Added online anomaly time-series anomaly detector (spike/drift/flatline/noise burst) using rolling z-score and local drift comparison. Welch PSD spectral analysis with Hanning/Blackman/rectangular window comparison.</div></div>
         <div><div class="pari-label">Result</div><div class="pari-text"><strong>2.04 cm RMSE vs 5.96 cm dead reckoning</strong>. Anomaly detector catches injected faults with recall up to 0.63 on gyro channel. Spectral analysis reveals 0.31 Hz dominant frequency — gyro SNR 38.4 dB.</div></div>
         <div><div class="pari-label">What I learned</div><div class="pari-text">Heading correction at 100 Hz matters more than ultrasonic updates — fixing the heading stops position errors from ever accumulating. The same Welch PSD pipeline applies directly to physiological and gravimeter sensor signals.</div></div>
       </div>
@@ -295,8 +295,8 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
     <a class="project-card reveal" href="https://github.com/AdvaithK500/time-series-classifier" target="_blank">
       <div class="project-top">
         <div>
-          <div class="project-summary">On-device activity recognition — 42k params, fits on Arduino</div>
-          <div class="project-name">Edge ML — 1-D CNN · BiLSTM · GRU for HAR</div>
+          <div class="project-summary">Time-series classification — on-device HAR, 42k params, fits on Arduino</div>
+          <div class="project-name">Edge ML — Time-Series Classification · CNN · BiLSTM · GRU</div>
         </div>
         <span class="project-arrow">↗</span>
       </div>
@@ -331,8 +331,8 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
       </div>
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Prompt injection (OWASP LLM #1) affects most RAG systems: attackers embed instructions in queries or retrieved documents. Most pipelines have no defence layer at all.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">BM25 retrieval (3 chunking strategies: fixed/paragraph/sentence) + <strong>ReAct agentic loop</strong> with tool use (retrieve, calculate, summarise) + 3-layer injection defence: 20+ regex patterns → heuristic scoring (instruction density, entropy) → indirect chunk screening. Deployed via Flask REST API.</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text">Retrieval MRR=1.000 across all strategies. <strong>Injection detector: Precision=1.000, Recall=0.833, F1=0.909</strong> — zero false positives, blocks all high-confidence attacks. Connect any LLM via a single callback.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text"><strong>End-to-end data pipeline:</strong> BM25 retrieval (3 chunking strategies) + <strong>ReAct agentic loop</strong> with tool use (retrieve, calculate, summarise) + 3-layer injection defence: 20+ regex patterns → heuristic scoring (instruction density, entropy) → indirect chunk screening. Deployed via Flask REST API.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text">Retrieval MRR=1.000 across all strategies. <strong>Injection detector: Precision=1.000, Recall=0.833, F1=0.909</strong> — zero false positives, blocks all high-confidence attacks. LLM generation via Claude / GPT-4 API. LLM generation via Claude / GPT-4 API. LLM generation via Claude / GPT-4 API. Connect any LLM via a single callback.</div></div>
         <div><div class="pari-label">What I learned</div><div class="pari-text">Indirect injection (malicious content in retrieved documents) is harder to catch than direct injection — it requires screening every chunk before it enters the context window, not just the user's input. The defence layer must be part of the retrieval pipeline, not bolted on after.</div></div>
       </div>
     </a>
@@ -361,7 +361,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
           <span class="skill-pill">scikit-learn</span>
           <span class="skill-pill">NumPy · SciPy</span>
           <span class="skill-pill">SHAP · TabPFN</span>
-          <span class="skill-pill">LangChain / RAG</span>
+          <span class="skill-pill">LangChain</span><span class="skill-pill">LLM API (Claude, GPT-4)</span>
         </div>
       </div>
       <div class="skill-group">
@@ -371,7 +371,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
           <span class="skill-pill">FreeRTOS</span>
           <span class="skill-pill">ROS2</span>
           <span class="skill-pill">Arduino</span>
-          <span class="skill-pill">I2C · UART · DMA</span>
+          <span class="skill-pill">I2C · UART · MQTT · DMA</span>
         </div>
       </div>
       <div class="skill-group">
@@ -382,7 +382,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
           <span class="skill-pill">Linux</span>
           <span class="skill-pill">Jupyter</span>
           <span class="skill-pill">Flask</span>
-          <span class="skill-pill">OpenCV</span>
+          <span class="skill-pill">OpenCV</span><span class="skill-pill">AWS (basics)</span><span class="skill-pill">Azure ML</span>
         </div>
       </div>
     </div>
