@@ -213,6 +213,23 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
       </div>
     </a>
   </div>
+
+    <a class="project-card reveal" href="https://github.com/AdvaithK500/agentic-rag" target="_blank">
+      <div class="project-top"><div><div class="project-name">Agentic RAG Pipeline with Security Hardening</div><div class="project-stack">Python · BM25 · ReAct Agent · Prompt Injection Detection · Flask API</div></div><span class="project-arrow">↗</span></div>
+      <div class="project-metrics">
+        <span class="metric-pill">MRR 1.000</span>
+        <span class="metric-pill amber">Injection F1 0.909</span>
+        <span class="metric-pill blue">0 false positives</span>
+        <span class="metric-pill red">OWASP LLM Top 10 #1</span>
+      </div>
+      <div class="pari">
+        <div><div class="pari-label">Problem</div><div class="pari-text">LLM-integrated apps are vulnerable to prompt injection — attackers embed malicious instructions in queries or retrieved documents. Most RAG systems have no defence layer.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">BM25 retrieval (3 chunking strategies) + <strong>ReAct agentic loop</strong> with tool use + 3-layer injection defence: regex patterns, heuristic scoring (instruction density, entropy), indirect chunk screening. Flask REST API for deployment.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text">Retrieval MRR=1.000 across all chunking strategies. <strong>Injection detector: Precision=1.000, Recall=0.833, F1=0.909</strong> — zero false positives, blocks all high-confidence attacks.</div></div>
+        <div><div class="pari-label">Insight</div><div class="pari-text">Indirect injection (malicious content in retrieved documents) is harder to detect than direct injection — it requires screening every chunk before it enters the context window, not just the user query.</div></div>
+      </div>
+    </a>
+  </div>
 </section>
 
 <section id="skills">
@@ -220,7 +237,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
     <div class="sec-header reveal"><span class="sec-num">03 /</span><h2>Technical stack</h2><div class="sec-line"></div></div>
     <div class="skills-grid reveal">
       <div class="skill-group"><div class="skill-group-title">Languages</div><div class="skill-list"><span class="skill-pill">Python</span><span class="skill-pill">C</span><span class="skill-pill">C++</span><span class="skill-pill">MATLAB</span></div></div>
-      <div class="skill-group"><div class="skill-group-title">ML / AI</div><div class="skill-list"><span class="skill-pill">PyTorch</span><span class="skill-pill">scikit-learn</span><span class="skill-pill">NumPy</span><span class="skill-pill">SHAP</span><span class="skill-pill">TabPFN</span></div></div>
+      <div class="skill-group"><div class="skill-group-title">ML / AI</div><div class="skill-list"><span class="skill-pill">PyTorch</span><span class="skill-pill">scikit-learn</span><span class="skill-pill">NumPy</span><span class="skill-pill">SHAP</span><span class="skill-pill">TabPFN</span><span class="skill-pill">LangChain / RAG</span></div></div>
       <div class="skill-group"><div class="skill-group-title">Embedded / Robotics</div><div class="skill-list"><span class="skill-pill">STM32 / HAL</span><span class="skill-pill">FreeRTOS</span><span class="skill-pill">ROS2</span><span class="skill-pill">Arduino</span><span class="skill-pill">I2C · UART · DMA</span></div></div>
       <div class="skill-group"><div class="skill-group-title">Tools</div><div class="skill-list"><span class="skill-pill">Git</span><span class="skill-pill">STM32CubeIDE</span><span class="skill-pill">Jupyter</span><span class="skill-pill">Linux</span></div></div>
     </div>
@@ -232,9 +249,9 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
     <div class="sec-header reveal"><span class="sec-num">04 /</span><h2>Let's talk</h2><div class="sec-line"></div></div>
     <p class="reveal" style="color:var(--dim);font-size:15px;max-width:480px;margin-bottom:1.75rem;line-height:1.8;">Looking for a May–July 2026 internship in embedded ML, robotics, or applied AI. Fastest response via email.</p>
     <div class="contact-row reveal">
-      <a class="contact-link" href="mailto:YOUR_EMAIL@e.ntu.edu.sg">✉ YOUR_EMAIL@e.ntu.edu.sg</a>
+      <a class="contact-link" href="mailto:advaith001@e.ntu.edu.sg">✉ advaith001@e.ntu.edu.sg</a>
       <a class="contact-link" href="https://github.com/AdvaithK500" target="_blank">⌥ github/AdvaithK500</a>
-      <a class="contact-link" href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">in YOUR_LINKEDIN</a>
+      <a class="contact-link" href="https://linkedin.com/in/advaith-kumar-13b117254" target="_blank">in advaith-kumar-13b117254</a>
     </div>
   </div>
 </section>
