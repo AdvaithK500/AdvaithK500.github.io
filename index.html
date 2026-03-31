@@ -166,17 +166,18 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
     </a>
 
     <a class="project-card reveal" href="https://github.com/AdvaithK500/ekf-sensor-fusion" target="_blank">
-      <div class="project-top"><div><div class="project-name">Extended Kalman Filter — Sensor Fusion</div><div class="project-stack">Python · NumPy · State Estimation · Robotics</div></div><span class="project-arrow">↗</span></div>
+      <div class="project-top"><div><div class="project-name">EKF Sensor Fusion + Signal Intelligence</div><div class="project-stack">Python · NumPy · SciPy · Anomaly Detection · Spectral Analysis</div></div><span class="project-arrow">↗</span></div>
       <div class="project-metrics">
         <span class="metric-pill">2.04 cm RMSE</span>
         <span class="metric-pill amber">+65.7% vs dead reckoning</span>
-        <span class="metric-pill blue">IMU + Encoders + Ultrasonic</span>
+        <span class="metric-pill blue">4 fault types · anomaly detection</span>
+        <span class="metric-pill red">Welch PSD · 3 windows</span>
       </div>
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Dead reckoning alone drifts to 6 cm error over a 27-second run. Each turn compounds heading error into position error.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">EKF with arc-based differential-drive motion model, ICM20948 gyro correction at 100 Hz, and HC-SR04 updates at 20 Hz with <strong>3σ outlier gating</strong>. All noise parameters from datasheets.</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text"><strong>2.04 cm RMSE vs 5.96 cm dead reckoning</strong> — 65.7% improvement. Uncertainty ellipses tighten visibly at each ultrasonic update.</div></div>
-        <div><div class="pari-label">Insight</div><div class="pari-text">Gyro correction at 100 Hz matters more than ultrasonic — correcting heading prevents position errors from ever accumulating.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">EKF fusing ICM20948 gyro (100 Hz) + encoders + HC-SR04 with <strong>3σ outlier gating</strong>. Extended with online sensor anomaly detection (spike, drift, flatline, noise burst) and <strong>Welch PSD spectral analysis</strong> with window function comparison (Hanning, Blackman, rectangular).</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text"><strong>2.04 cm RMSE vs 5.96 cm dead reckoning</strong> (65.7% improvement). Anomaly detector catches all 4 injected fault types across gyro, encoder, and ultrasonic channels. SNR 38 dB on gyro channel.</div></div>
+        <div><div class="pari-label">Insight</div><div class="pari-text">Gyro correction at 100 Hz dominates position accuracy. Spectral analysis reveals motion content (0.31 Hz dominant) — the same frequency-domain pipeline applies directly to physiological and gravimeter signals.</div></div>
       </div>
     </a>
 
