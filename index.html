@@ -159,7 +159,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
       </div>
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Navigate a 10×10 maze fully autonomously — find all targets, compute the fastest return path, execute without human input.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">Wrote the entire STM32 firmware: <strong>9 concurrent FreeRTOS tasks</strong> fusing ICM20948 IMU, dual quadrature encoders, HC-SR04 ultrasonic and Sharp IR — PID motor control + DMA-buffered UART to Raspberry Pi.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">Wrote the entire STM32 firmware: <strong>9 concurrent FreeRTOS tasks</strong> fusing ICM20948 IMU, dual encoders, HC-SR04 and Sharp IR. Added a Python <strong>OpenCV obstacle detection</strong> layer with UART command generation and a <strong>Flask REST API</strong> for WiFi control. Features EMI-protected I2C, log-log calibrated IR, and anti-windup PID.</div></div>
         <div><div class="pari-label">Result</div><div class="pari-text">Reliable navigation over repeated runs with sub-centimetre wall alignment. Gyro-corrected turns held heading error under 1° across 90° manoeuvres.</div></div>
         <div><div class="pari-label">Insight</div><div class="pari-text"><strong>80% of autonomous reliability is firmware, not algorithm.</strong> Interrupt timing, DMA buffer sizing and task priority tuning mattered more than path planning.</div></div>
       </div>
@@ -231,9 +231,9 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
     <div class="sec-header reveal"><span class="sec-num">04 /</span><h2>Let's talk</h2><div class="sec-line"></div></div>
     <p class="reveal" style="color:var(--dim);font-size:15px;max-width:480px;margin-bottom:1.75rem;line-height:1.8;">Looking for a May–July 2026 internship in embedded ML, robotics, or applied AI. Fastest response via email.</p>
     <div class="contact-row reveal">
-      <a class="contact-link" href="mailto:advaith001@e.ntu.edu.sg">✉ advaith001@e.ntu.edu.sg</a>
+      <a class="contact-link" href="mailto:YOUR_EMAIL@e.ntu.edu.sg">✉ YOUR_EMAIL@e.ntu.edu.sg</a>
       <a class="contact-link" href="https://github.com/AdvaithK500" target="_blank">⌥ github/AdvaithK500</a>
-      <a class="contact-link" href="https://linkedin.com/in/www.linkedin.com/in/advaith-kumar-13b117254" target="_blank">in www.linkedin.com/in/advaith-kumar-13b117254</a>
+      <a class="contact-link" href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">in YOUR_LINKEDIN</a>
     </div>
   </div>
 </section>
