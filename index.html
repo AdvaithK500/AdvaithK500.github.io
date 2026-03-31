@@ -182,18 +182,18 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
     </a>
 
     <a class="project-card reveal" href="https://github.com/AdvaithK500/time-series-classifier" target="_blank">
-      <div class="project-top"><div><div class="project-name">Edge ML — 1-D CNN on Arduino BLE Sense 33</div><div class="project-stack">PyTorch · Edge Inference · HAR · TorchScript · 50 Hz IMU</div></div><span class="project-arrow">↗</span></div>
+      <div class="project-top"><div><div class="project-name">Edge ML — CNN · LSTM · GRU on Arduino BLE Sense 33</div><div class="project-stack">PyTorch · MFCC Features · BiLSTM · GRU · Edge Inference · 50 Hz IMU</div></div><span class="project-arrow">↗</span></div>
       <div class="project-metrics">
-        <span class="metric-pill">42k parameters</span>
-        <span class="metric-pill amber">~165 KB float32</span>
-        <span class="metric-pill blue">6-class · 50 Hz</span>
-        <span class="metric-pill red">Fits 256 KB SRAM</span>
+        <span class="metric-pill">42k params · CNN wins</span>
+        <span class="metric-pill amber">258-dim MFCC features</span>
+        <span class="metric-pill blue">CNN · BiLSTM · GRU compared</span>
+        <span class="metric-pill red">az channel importance 0.270</span>
       </div>
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Classify 6 activities from raw 6-axis IMU windows in real time, on a microcontroller with 256 KB RAM.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">3-block 1D CNN + residual layer + Global Average Pooling. AdamW with cosine LR decay, early stopping. Exported via <strong>TorchScript</strong> for embedded deployment.</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text">Model fits comfortably after int8 quantisation (~11 KB). RF baseline hit 100% on clean data; CNN targets 96.5% on real sensor noise.</div></div>
-        <div><div class="pari-label">Insight</div><div class="pari-text"><strong>Global Average Pooling beats Flatten + dense</strong> — halves parameter count, forces conv layers to learn meaningful temporal features.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">Three architectures compared: <strong>CNN1D</strong> (42k params), <strong>BiLSTM</strong> (99k), <strong>GRU</strong> (74k). MFCC-inspired filterbank feature pipeline: Hanning window → FFT → linear filterbank (12 bands) → log energy + delta + DCT cepstral coefficients = 258-dim feature vector per window.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text"><strong>CNN1D wins on efficiency</strong>: 96.5% accuracy at 42k params vs BiLSTM 95.2% at 99k. Feature importance analysis shows <strong>az (vertical accel) dominates at 0.270</strong> — gravity modulation is the primary activity discriminator.</div></div>
+        <div><div class="pari-label">Insight</div><div class="pari-text">MFCC (designed for speech) transfers directly to IMU data — both are fixed-rate signals with energy distributed across frequency bands. Walking at 2 Hz vs running at 3 Hz is exactly the frequency separation a filterbank captures.</div></div>
       </div>
     </a>
 
