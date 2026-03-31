@@ -3,23 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advaith Kumar — Embedded ML & Robotics</title>
-<meta name="description" content="I build AI systems that work in the real world — from bare-metal STM32 firmware to PyTorch models. NTU Computer Engineering, Year 3.">
+<title>Advaith Kumar — ML Systems & Embedded AI</title>
+<meta name="description" content="Computer Engineering student at NTU building AI systems that work under real-world constraints — from bare-metal firmware to production ML pipelines.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --bg:#080a09;--s1:#0f120f;--s2:#141914;--border:#1e271e;--muted:#2e3d2e;
-  --dim:#5a7060;--body:#9db5a0;--head:#dceedd;--acc:#4eff7c;--acc2:#1db954;
-  --acc-dim:rgba(78,255,124,.08);--red:#ff6b6b;--amber:#ffc947;--blue:#64b5f6;
-  --syne:'Syne',sans-serif;--mono:'JetBrains Mono',monospace;--body-font:'Inter',sans-serif;--r:8px;
+  --dim:#5a7060;--body:#9db5a0;--head:#dceedd;
+  --acc:#4eff7c;--acc2:#1db954;--acc-dim:rgba(78,255,124,.08);
+  --red:#ff6b6b;--amber:#ffc947;--blue:#64b5f6;--purple:#b39ddb;
+  --syne:'Syne',sans-serif;--mono:'JetBrains Mono',monospace;--body-font:'Inter',sans-serif;
+  --r:8px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--body);font-family:var(--body-font);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.wrap{max-width:900px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);position:relative;z-index:1}
-nav{position:sticky;top:0;z-index:100;padding:.9rem 0;background:rgba(8,10,9,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.wrap{max-width:860px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);position:relative;z-index:1}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;padding:.9rem 0;background:rgba(8,10,9,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between}
 .nav-brand{font-family:var(--mono);font-size:12px;color:var(--acc);text-decoration:none;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
 .nav-brand::before{content:'▸';color:var(--acc);font-size:10px}
@@ -28,18 +32,20 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between}
 .nav-links a:hover{color:var(--acc)}
 .nav-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-#hero{padding:clamp(5rem,12vw,9rem) 0 clamp(3.5rem,7vw,6rem);border-bottom:1px solid var(--border);position:relative}
-#hero::before{content:'';position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(ellipse,rgba(78,255,124,.06) 0%,transparent 70%);pointer-events:none}
-.hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;opacity:0;animation:fadeUp .5s ease .1s forwards}
+
+/* HERO */
+#hero{padding:clamp(5rem,12vw,8rem) 0 clamp(3rem,6vw,5rem);border-bottom:1px solid var(--border);position:relative}
+#hero::before{content:'';position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(ellipse,rgba(78,255,124,.05) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1.25rem;opacity:0;animation:fadeUp .5s ease .1s forwards}
 .hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--acc)}
-h1{font-family:var(--syne);font-size:clamp(2.6rem,7vw,4.4rem);font-weight:700;color:var(--head);line-height:1.08;letter-spacing:-.03em;margin-bottom:1.75rem;opacity:0;animation:fadeUp .55s ease .2s forwards}
+h1{font-family:var(--syne);font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700;color:var(--head);line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .55s ease .2s forwards}
 h1 .acc{color:var(--acc)}
-h1 .dim-word{color:var(--dim);font-weight:400}
-.hero-belief{max-width:580px;font-size:16px;color:var(--body);line-height:1.8;margin-bottom:1.5rem;opacity:0;animation:fadeUp .55s ease .32s forwards}
-.hero-belief strong{color:var(--head);font-weight:500}
-.hero-focus{max-width:500px;display:flex;flex-direction:column;gap:.4rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp .55s ease .42s forwards}
-.focus-line{font-family:var(--mono);font-size:12px;color:var(--dim);display:flex;align-items:center;gap:.6rem}
-.focus-line::before{content:'→';color:var(--acc)}
+h1 .soft{color:var(--dim);font-weight:400}
+.hero-sub{max-width:560px;font-size:16px;color:var(--body);line-height:1.85;margin-bottom:2rem;opacity:0;animation:fadeUp .55s ease .32s forwards}
+.hero-sub strong{color:var(--head);font-weight:500}
+.hero-focus{display:flex;flex-direction:column;gap:.35rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp .55s ease .42s forwards}
+.focus-line{font-family:var(--mono);font-size:12px;color:var(--dim);display:flex;align-items:flex-start;gap:.6rem;line-height:1.5}
+.focus-line::before{content:'→';color:var(--acc);flex-shrink:0;margin-top:1px}
 .focus-line .hl{color:var(--body)}
 .hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;opacity:0;animation:fadeUp .55s ease .52s forwards}
 .btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 1.3rem;border-radius:var(--r);text-decoration:none;transition:all .2s}
@@ -47,80 +53,118 @@ h1 .dim-word{color:var(--dim);font-weight:400}
 .btn-primary:hover{background:#7fffaa;border-color:#7fffaa;transform:translateY(-1px)}
 .btn-ghost{background:transparent;color:var(--body);border:1px solid var(--border)}
 .btn-ghost:hover{border-color:var(--muted);color:var(--head)}
-section{padding:clamp(3.5rem,8vw,6rem) 0;border-bottom:1px solid var(--border)}
-.sec-header{display:flex;align-items:center;gap:.9rem;margin-bottom:clamp(2rem,4vw,3rem)}
+
+/* SECTIONS */
+section{padding:clamp(3rem,7vw,5rem) 0;border-bottom:1px solid var(--border)}
+.sec-header{display:flex;align-items:center;gap:.9rem;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
 .sec-num{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:.1em}
-h2{font-family:var(--syne);font-size:clamp(1.2rem,2.5vw,1.5rem);font-weight:600;color:var(--head);letter-spacing:-.02em}
+h2{font-family:var(--syne);font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:600;color:var(--head);letter-spacing:-.02em}
 .sec-line{flex:1;height:1px;background:var(--border)}
-.belief-strip{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:2rem 2.25rem;margin-bottom:2.5rem}
-.belief-strip p{font-family:var(--syne);font-size:clamp(1rem,2.2vw,1.2rem);color:var(--body);line-height:1.75;font-weight:400}
-.belief-strip p strong{color:var(--acc);font-weight:600}
-.obsession-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.obs-card{background:var(--s1);padding:1.5rem 1.75rem;transition:background .2s}
-.obs-card:hover{background:var(--s2)}
-.obs-icon{font-size:1.4rem;margin-bottom:.75rem}
-.obs-title{font-family:var(--syne);font-size:15px;font-weight:600;color:var(--head);margin-bottom:.5rem}
-.obs-body{font-size:13px;color:var(--dim);line-height:1.7}
-.project-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:2rem 2.25rem;margin-bottom:1rem;text-decoration:none;display:block;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
-.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--acc),transparent);opacity:0;transition:opacity .3s}
-.project-card:hover{border-color:var(--muted);background:var(--s2)}
-.project-card:hover::before{opacity:1}
-.project-card:last-child{margin-bottom:0}
-.project-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
-.project-name{font-family:var(--syne);font-size:18px;font-weight:600;color:var(--head);margin-bottom:.25rem}
-.project-stack{font-family:var(--mono);font-size:11px;color:var(--acc2);letter-spacing:.04em}
-.project-arrow{font-size:20px;color:var(--muted);transition:color .2s,transform .2s;flex-shrink:0;margin-left:1rem;margin-top:2px}
-.project-card:hover .project-arrow{color:var(--acc);transform:translate(3px,-3px)}
-.project-metrics{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.25rem}
-.metric-pill{font-family:var(--mono);font-size:11px;padding:.25rem .65rem;border-radius:4px;background:var(--acc-dim);border:1px solid rgba(78,255,124,.2);color:var(--acc);letter-spacing:.04em}
-.metric-pill.red{background:rgba(255,107,107,.08);border-color:rgba(255,107,107,.2);color:var(--red)}
-.metric-pill.amber{background:rgba(255,201,71,.08);border-color:rgba(255,201,71,.2);color:var(--amber)}
-.metric-pill.blue{background:rgba(100,181,246,.08);border-color:rgba(100,181,246,.2);color:var(--blue)}
-.pari{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1.75rem;margin-bottom:.5rem}
+
+/* WHAT I WORK ON */
+.focus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.75rem}
+.focus-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;transition:border-color .2s}
+.focus-card:hover{border-color:var(--muted)}
+.focus-card-label{font-family:var(--mono);font-size:10px;color:var(--acc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.focus-card-title{font-family:var(--syne);font-size:15px;font-weight:600;color:var(--head);margin-bottom:.4rem}
+.focus-card-body{font-size:13px;color:var(--dim);line-height:1.65}
+
+/* FLAGSHIP */
+.flagship{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:2rem 2.25rem;margin-bottom:0;position:relative;overflow:hidden}
+.flagship::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2),transparent)}
+.flagship-label{font-family:var(--mono);font-size:10px;color:var(--acc);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.flagship-label::before{content:'★';font-size:10px}
+.flagship-title{font-family:var(--syne);font-size:clamp(1.2rem,2.5vw,1.5rem);font-weight:700;color:var(--head);margin-bottom:.4rem;line-height:1.2}
+.flagship-tagline{font-family:var(--mono);font-size:11px;color:var(--acc2);margin-bottom:1.25rem}
+.flagship-pari{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 2rem;margin-bottom:1.25rem}
 .pari-label{font-family:var(--mono);font-size:10px;color:var(--acc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.2rem}
 .pari-text{font-size:13px;color:var(--dim);line-height:1.65}
 .pari-text strong{color:var(--body);font-weight:500}
+.flagship-metrics{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.flagship-link{font-family:var(--mono);font-size:11px;color:var(--acc);text-decoration:none;letter-spacing:.06em;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s}
+.flagship-link:hover{gap:.7rem}
+
+/* PROJECTS */
+.project-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.75rem 2rem;margin-bottom:.75rem;text-decoration:none;display:block;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--acc),transparent);opacity:0;transition:opacity .3s}
+.project-card:hover{border-color:var(--muted);background:var(--s2)}
+.project-card:hover::before{opacity:1}
+.project-card:last-child{margin-bottom:0}
+.project-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.85rem}
+.project-summary{font-family:var(--mono);font-size:11px;color:var(--acc2);letter-spacing:.04em;margin-bottom:.25rem}
+.project-name{font-family:var(--syne);font-size:17px;font-weight:600;color:var(--head)}
+.project-arrow{font-size:18px;color:var(--muted);transition:color .2s,transform .2s;flex-shrink:0;margin-left:1rem;margin-top:2px}
+.project-card:hover .project-arrow{color:var(--acc);transform:translate(3px,-3px)}
+.project-metrics{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.metric-pill{font-family:var(--mono);font-size:11px;padding:.2rem .6rem;border-radius:4px;background:var(--acc-dim);border:1px solid rgba(78,255,124,.2);color:var(--acc);letter-spacing:.04em}
+.metric-pill.red{background:rgba(255,107,107,.08);border-color:rgba(255,107,107,.2);color:var(--red)}
+.metric-pill.amber{background:rgba(255,201,71,.08);border-color:rgba(255,201,71,.2);color:var(--amber)}
+.metric-pill.blue{background:rgba(100,181,246,.08);border-color:rgba(100,181,246,.2);color:var(--blue)}
+.metric-pill.purple{background:rgba(179,157,219,.08);border-color:rgba(179,157,219,.2);color:var(--purple)}
+.pari{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1.5rem}
+
+/* SKILLS */
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
 .skill-group{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;transition:border-color .2s}
 .skill-group:hover{border-color:var(--muted)}
 .skill-group-title{font-family:var(--mono);font-size:10px;color:var(--acc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.85rem}
 .skill-list{display:flex;flex-wrap:wrap;gap:.4rem}
 .skill-pill{font-family:var(--mono);font-size:11px;color:var(--body);background:rgba(78,255,124,.05);border:1px solid var(--border);border-radius:4px;padding:.2rem .55rem}
+
+/* EXPLORING */
+.exploring-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem}
+.explore-item{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.3rem;transition:border-color .2s}
+.explore-item:hover{border-color:var(--acc)}
+.explore-num{font-family:var(--mono);font-size:10px;color:var(--acc);letter-spacing:.1em;margin-bottom:.4rem}
+.explore-title{font-size:13px;font-weight:500;color:var(--head);margin-bottom:.25rem}
+.explore-body{font-size:12px;color:var(--dim);line-height:1.6}
+
+/* CONTACT */
 .contact-row{display:flex;flex-wrap:wrap;gap:.75rem}
 .contact-link{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:11px;color:var(--dim);text-decoration:none;padding:.65rem 1.1rem;border:1px solid var(--border);border-radius:var(--r);background:var(--s1);transition:border-color .2s,color .2s;letter-spacing:.06em}
 .contact-link:hover{border-color:var(--acc);color:var(--acc)}
+
 footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em;border-top:1px solid var(--border)}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:600px){.nav-links{display:none}.hero-cta{flex-direction:column}.pari{grid-template-columns:1fr}}
+@media(max-width:600px){.nav-links{display:none}.hero-cta{flex-direction:column}.flagship-pari,.pari{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
   <div class="wrap">
     <a class="nav-brand" href="#">advaith kumar</a>
     <ul class="nav-links">
-      <li><a href="#obsessions">thinking</a></li>
+      <li><a href="#focus">focus</a></li>
       <li><a href="#projects">projects</a></li>
       <li><a href="#skills">skills</a></li>
+      <li><a href="#exploring">exploring</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
     <div class="nav-dot"></div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="wrap">
     <div class="hero-eyebrow">Computer Engineering · NTU Singapore · Year 3</div>
-    <h1>I build AI systems<br>that <span class="acc">actually work</span><br><span class="dim-word">in the real world.</span></h1>
-    <p class="hero-belief">Most ML stays in notebooks. I care about the last mile —
-    <strong>getting models onto hardware, into pipelines, and out into the world</strong>
-    reliably. That means understanding both the mathematics and the machine.</p>
+    <h1>I build AI systems that work<br><span class="acc">under real-world constraints.</span></h1>
+    <p class="hero-sub">
+      Most ML research optimises for benchmark accuracy. I care about what happens
+      <strong>after</strong> — when the model runs on a microcontroller at 50 Hz,
+      when the sensor drifts mid-run, when the explainer lies to you because
+      the model isn't what you think it is.
+    </p>
     <div class="hero-focus">
-      <span class="focus-line"><span class="hl">Embedded ML</span> — inference at the edge, hardware-aware design</span>
-      <span class="focus-line"><span class="hl">Sensor fusion & robotics</span> — making machines perceive reliably</span>
-      <span class="focus-line"><span class="hl">Explainable AI</span> — understanding what models actually learn</span>
+      <span class="focus-line"><span class="hl">Embedded ML & hardware-aware inference</span> — TinyML, edge deployment, STM32</span>
+      <span class="focus-line"><span class="hl">Reliable sensor fusion & robotics</span> — EKF, anomaly detection, FreeRTOS</span>
+      <span class="focus-line"><span class="hl">Explainability beyond SHAP/LIME</span> — faithfulness on foundation models, ICL drift</span>
+      <span class="focus-line"><span class="hl">Agentic AI systems</span> — RAG pipelines, prompt security, LLM integration</span>
     </div>
     <div class="hero-cta">
       <a class="btn btn-primary" href="https://github.com/AdvaithK500" target="_blank">GitHub ↗</a>
@@ -130,128 +174,262 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
   </div>
 </section>
 
-<section id="obsessions">
+<!-- WHAT I WORK ON -->
+<section id="focus">
   <div class="wrap">
-    <div class="sec-header reveal"><span class="sec-num">01 /</span><h2>What I'm currently obsessed with</h2><div class="sec-line"></div></div>
-    <div class="belief-strip reveal">
-      <p>The gap between "AI that works on a benchmark" and <strong>"AI that works on a robot in the rain"</strong> is where all the interesting problems live. I want to close that gap — through better sensor fusion, tighter hardware-model co-design, and explainability tools that tell you <strong>why a model failed</strong>, not just that it did.</p>
-    </div>
-    <div class="obsession-grid reveal">
-      <div class="obs-card"><div class="obs-icon">⚡</div><div class="obs-title">Edge inference</div><div class="obs-body">42k-parameter CNNs that run on Arduino. The constraint is the creativity — every kilobyte is a design decision.</div></div>
-      <div class="obs-card"><div class="obs-icon">🔭</div><div class="obs-title">Sensor fusion</div><div class="obs-body">Kalman filters, IMU drift, dead reckoning — turning noisy hardware into a coherent world model in real time.</div></div>
-      <div class="obs-card"><div class="obs-icon">🧠</div><div class="obs-title">Explainable AI</div><div class="obs-body">SHAP and LIME break on in-context learning. The right question isn't "is this explanation faithful?" — it's "faithful to what?"</div></div>
-      <div class="obs-card"><div class="obs-icon">🤖</div><div class="obs-title">Autonomous systems</div><div class="obs-body">What makes a robot reliable? Spoiler: it's 80% firmware and interrupt timing, 20% algorithm.</div></div>
+    <div class="sec-header reveal"><span class="sec-num">01 /</span><h2>What I work on</h2><div class="sec-line"></div></div>
+    <div class="focus-grid reveal">
+      <div class="focus-card">
+        <div class="focus-card-label">ML Systems</div>
+        <div class="focus-card-title">End-to-end pipelines</div>
+        <div class="focus-card-body">Building ML that goes beyond training — feature engineering, model evaluation, deployment constraints, and inference at the edge.</div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-card-label">Embedded AI</div>
+        <div class="focus-card-title">Hardware-aware design</div>
+        <div class="focus-card-body">Running models on constrained hardware — STM32, Arduino BLE Sense, 256 KB SRAM. Every kilobyte is a design decision.</div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-card-label">Explainability</div>
+        <div class="focus-card-title">Honest model understanding</div>
+        <div class="focus-card-body">SHAP and LIME break on in-context learning. I study where standard explainability tools fail and why — with empirical faithfulness metrics.</div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-card-label">Agentic Systems</div>
+        <div class="focus-card-title">LLMs that actually work</div>
+        <div class="focus-card-body">RAG pipelines with real security hardening — prompt injection defence, retrieval quality benchmarks, production REST APIs.</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FLAGSHIP -->
+<section id="flagship">
+  <div class="wrap">
+    <div class="sec-header reveal"><span class="sec-num">02 /</span><h2>Featured research</h2><div class="sec-line"></div></div>
+    <div class="flagship reveal">
+      <div class="flagship-label">Flagship project</div>
+      <div class="flagship-title">Are SHAP & LIME Faithful on Tabular Foundation Models?</div>
+      <div class="flagship-tagline">TabPFN · KernelSHAP · LIME · Infidelity · Spearman ρ · Privacy Analysis · NTU × Lexsi Labs</div>
+      <div class="flagship-metrics">
+        <span class="metric-pill">SHAP ρ = 0.474</span>
+        <span class="metric-pill red">LIME ρ = −0.060 (noise)</span>
+        <span class="metric-pill amber">Intrinsic probe ρ = −0.350</span>
+        <span class="metric-pill blue">TabPFN acc 90% vs XGB 86.7%</span>
+      </div>
+      <div class="flagship-pari">
+        <div>
+          <div class="pari-label">Problem</div>
+          <div class="pari-text">SHAP and LIME assume fixed model weights. TabPFN uses <strong>in-context learning</strong> — the training set is the prompt. When SHAP masks a feature, attention retrieves different context neighbours, shifting what task the model solves. You end up measuring feature importance + context drift mixed together, inseparably.</div>
+        </div>
+        <div>
+          <div class="pari-label">Approach</div>
+          <div class="pari-text">Measured three faithfulness metrics — Infidelity (Yeh et al., 2019), Sufficiency, and Spearman ρ against XGBoost-TreeSHAP as exact Shapley reference — across KernelSHAP, LIME, and a finite-difference sensitivity probe on the Adult Income dataset (N=100 train, 30 test, 14 features).</div>
+        </div>
+        <div>
+          <div class="pari-label">Result</div>
+          <div class="pari-text"><strong>SHAP is locally faithful (ρ=0.474) but LIME is noise (ρ=−0.06). Most strikingly, the intrinsic probe is negatively correlated (ρ=−0.35)</strong> — TabPFN and XGBoost learned genuinely different decision boundaries from identical data. Extended with a privacy risk analysis: ICL training data is in the prompt, creating membership inference attack surfaces classical ML doesn't have.</div>
+        </div>
+        <div>
+          <div class="pari-label">Insight</div>
+          <div class="pari-text">Post-hoc tools can be locally consistent <em>and still miss the model's actual reasoning</em>. The right question is not "is this explanation faithful?" — it's <strong>"faithful to what, exactly?"</strong> Using XGBoost-SHAP as a proxy for TFM reasoning is misleading even when SHAP passes the infidelity test.</div>
+        </div>
+      </div>
+      <a class="flagship-link" href="https://github.com/AdvaithK500/tabpfn-xai-study" target="_blank">View full study + privacy analysis →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <div class="sec-header reveal"><span class="sec-num">02 /</span><h2>Projects</h2><div class="sec-line"></div></div>
+    <div class="sec-header reveal"><span class="sec-num">03 /</span><h2>Selected projects</h2><div class="sec-line"></div></div>
 
+    <!-- MDP Robot -->
     <a class="project-card reveal" href="https://github.com/AdvaithK500/mdp-autonomous-robot" target="_blank">
-      <div class="project-top"><div><div class="project-name">NTU MDP Autonomous Robot</div><div class="project-stack">Embedded C · STM32F4 · FreeRTOS · ICM20948 · Sensor Fusion</div></div><span class="project-arrow">↗</span></div>
+      <div class="project-top">
+        <div>
+          <div class="project-summary">Fully autonomous maze navigation — bare-metal STM32 firmware</div>
+          <div class="project-name">NTU MDP Autonomous Robot</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
       <div class="project-metrics">
-        <span class="metric-pill">9 FreeRTOS tasks</span>
-        <span class="metric-pill amber">Sub-cm alignment</span>
-        <span class="metric-pill blue">10×10 grid maze</span>
-        <span class="metric-pill red">180 MHz STM32F4</span>
+        <span class="metric-pill">Sub-cm wall alignment</span>
+        <span class="metric-pill amber">9 FreeRTOS tasks</span>
+        <span class="metric-pill blue">Heading error &lt;1° on 90° turns</span>
+        <span class="metric-pill red">OpenCV obstacle detection</span>
       </div>
       <div class="pari">
-        <div><div class="pari-label">Problem</div><div class="pari-text">Navigate a 10×10 maze fully autonomously — find all targets, compute the fastest return path, execute without human input.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">Wrote the entire STM32 firmware: <strong>9 concurrent FreeRTOS tasks</strong> fusing ICM20948 IMU, dual encoders, HC-SR04 and Sharp IR. Added a Python <strong>OpenCV obstacle detection</strong> layer with UART command generation and a <strong>Flask REST API</strong> for WiFi control. Features EMI-protected I2C, log-log calibrated IR, and anti-windup PID.</div></div>
+        <div><div class="pari-label">Problem</div><div class="pari-text">Navigate a 10×10 maze autonomously, identify all image targets, compute the fastest return path, execute without any human input.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">Wrote the entire STM32 firmware: <strong>9 concurrent FreeRTOS tasks</strong> fusing ICM20948 IMU, dual 480-CPR encoders, HC-SR04 ultrasonic and Sharp IR. EMI-protected I2C, log-log calibrated IR, anti-windup PID, DMA-buffered UART bridge to Raspberry Pi. Added Python OpenCV obstacle detection + Flask REST API.</div></div>
         <div><div class="pari-label">Result</div><div class="pari-text">Reliable navigation over repeated runs with sub-centimetre wall alignment. Gyro-corrected turns held heading error under 1° across 90° manoeuvres.</div></div>
-        <div><div class="pari-label">Insight</div><div class="pari-text"><strong>80% of autonomous reliability is firmware, not algorithm.</strong> Interrupt timing, DMA buffer sizing and task priority tuning mattered more than path planning.</div></div>
+        <div><div class="pari-label">What I learned</div><div class="pari-text"><strong>80% of autonomous reliability is firmware, not algorithm.</strong> Interrupt timing, DMA buffer sizing and task priority tuning mattered more than the path planning algorithm running upstairs on the Pi.</div></div>
       </div>
     </a>
 
+    <!-- EKF -->
     <a class="project-card reveal" href="https://github.com/AdvaithK500/ekf-sensor-fusion" target="_blank">
-      <div class="project-top"><div><div class="project-name">EKF Sensor Fusion + Signal Intelligence</div><div class="project-stack">Python · NumPy · SciPy · Anomaly Detection · Spectral Analysis</div></div><span class="project-arrow">↗</span></div>
+      <div class="project-top">
+        <div>
+          <div class="project-summary">State estimation + sensor health monitoring for autonomous robots</div>
+          <div class="project-name">EKF Sensor Fusion + Signal Intelligence</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
       <div class="project-metrics">
         <span class="metric-pill">2.04 cm RMSE</span>
-        <span class="metric-pill amber">+65.7% vs dead reckoning</span>
-        <span class="metric-pill blue">4 fault types · anomaly detection</span>
-        <span class="metric-pill red">Welch PSD · 3 windows</span>
+        <span class="metric-pill amber">65.7% better than dead reckoning</span>
+        <span class="metric-pill blue">4 fault types detected</span>
+        <span class="metric-pill red">Welch PSD · SNR 38 dB</span>
       </div>
       <div class="pari">
-        <div><div class="pari-label">Problem</div><div class="pari-text">Dead reckoning alone drifts to 6 cm error over a 27-second run. Each turn compounds heading error into position error.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">EKF fusing ICM20948 gyro (100 Hz) + encoders + HC-SR04 with <strong>3σ outlier gating</strong>. Extended with online sensor anomaly detection (spike, drift, flatline, noise burst) and <strong>Welch PSD spectral analysis</strong> with window function comparison (Hanning, Blackman, rectangular).</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text"><strong>2.04 cm RMSE vs 5.96 cm dead reckoning</strong> (65.7% improvement). Anomaly detector catches all 4 injected fault types across gyro, encoder, and ultrasonic channels. SNR 38 dB on gyro channel.</div></div>
-        <div><div class="pari-label">Insight</div><div class="pari-text">Gyro correction at 100 Hz dominates position accuracy. Spectral analysis reveals motion content (0.31 Hz dominant) — the same frequency-domain pipeline applies directly to physiological and gravimeter signals.</div></div>
+        <div><div class="pari-label">Problem</div><div class="pari-text">Dead reckoning drifts to 6 cm error over 27 seconds — each turn compounds heading error into position error. Sensors also fail silently: bias drift, EMI spikes, flatlines.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">EKF with arc-based differential-drive kinematics, 100 Hz gyro correction, 20 Hz ultrasonic updates with <strong>3σ outlier gating</strong>. Added online anomaly detector (spike/drift/flatline/noise burst) using rolling z-score and local drift comparison. Welch PSD spectral analysis with Hanning/Blackman/rectangular window comparison.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text"><strong>2.04 cm RMSE vs 5.96 cm dead reckoning</strong>. Anomaly detector catches injected faults with recall up to 0.63 on gyro channel. Spectral analysis reveals 0.31 Hz dominant frequency — gyro SNR 38.4 dB.</div></div>
+        <div><div class="pari-label">What I learned</div><div class="pari-text">Heading correction at 100 Hz matters more than ultrasonic updates — fixing the heading stops position errors from ever accumulating. The same Welch PSD pipeline applies directly to physiological and gravimeter sensor signals.</div></div>
       </div>
     </a>
 
+    <!-- CNN/LSTM -->
     <a class="project-card reveal" href="https://github.com/AdvaithK500/time-series-classifier" target="_blank">
-      <div class="project-top"><div><div class="project-name">Edge ML — CNN · LSTM · GRU on Arduino BLE Sense 33</div><div class="project-stack">PyTorch · MFCC Features · BiLSTM · GRU · Edge Inference · 50 Hz IMU</div></div><span class="project-arrow">↗</span></div>
+      <div class="project-top">
+        <div>
+          <div class="project-summary">On-device activity recognition — 42k params, fits on Arduino</div>
+          <div class="project-name">Edge ML — 1-D CNN · BiLSTM · GRU for HAR</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
       <div class="project-metrics">
-        <span class="metric-pill">42k params · CNN wins</span>
+        <span class="metric-pill">CNN 96.5% · GRU 95.8%</span>
         <span class="metric-pill amber">258-dim MFCC features</span>
-        <span class="metric-pill blue">CNN · BiLSTM · GRU compared</span>
+        <span class="metric-pill blue">42k params · ~165 KB</span>
         <span class="metric-pill red">az channel importance 0.270</span>
       </div>
       <div class="pari">
-        <div><div class="pari-label">Problem</div><div class="pari-text">Classify 6 activities from raw 6-axis IMU windows in real time, on a microcontroller with 256 KB RAM.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">Three architectures compared: <strong>CNN1D</strong> (42k params), <strong>BiLSTM</strong> (99k), <strong>GRU</strong> (74k). MFCC-inspired filterbank feature pipeline: Hanning window → FFT → linear filterbank (12 bands) → log energy + delta + DCT cepstral coefficients = 258-dim feature vector per window.</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text"><strong>CNN1D wins on efficiency</strong>: 96.5% accuracy at 42k params vs BiLSTM 95.2% at 99k. Feature importance analysis shows <strong>az (vertical accel) dominates at 0.270</strong> — gravity modulation is the primary activity discriminator.</div></div>
-        <div><div class="pari-label">Insight</div><div class="pari-text">MFCC (designed for speech) transfers directly to IMU data — both are fixed-rate signals with energy distributed across frequency bands. Walking at 2 Hz vs running at 3 Hz is exactly the frequency separation a filterbank captures.</div></div>
+        <div><div class="pari-label">Problem</div><div class="pari-text">Classify 6 activities from raw 6-axis IMU windows in real time, on a microcontroller with 256 KB SRAM. Need both accuracy and efficiency.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">MFCC-inspired filterbank pipeline: Hanning window → FFT → 12-band linear filterbank → log energy + delta + DCT cepstral coefficients = 258-dim feature vector. Three deep architectures: <strong>CNN1D</strong> (42k), <strong>BiLSTM</strong> (99k), <strong>GRU</strong> (74k). Feature importance heatmap shows az (vertical accel) dominates at importance 0.270.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text">CNN1D wins on efficiency: <strong>96.5% at 42k params</strong> vs BiLSTM 95.2% at 99k. RF baseline 100% on clean synthetic data. CNN fits on-device after int8 quantisation (~11 KB). Walking (2 Hz) and running (3 Hz) separated cleanly by filterbank.</div></div>
+        <div><div class="pari-label">What I learned</div><div class="pari-text">MFCC was designed for speech but transfers directly to IMU data — both are fixed-rate signals with energy in frequency bands. Global Average Pooling halves parameter count vs Flatten with no accuracy loss, forcing conv layers to learn genuinely useful temporal features.</div></div>
       </div>
     </a>
 
-    <a class="project-card reveal" href="https://github.com/AdvaithK500/tabpfn-xai-study" target="_blank">
-      <div class="project-top"><div><div class="project-name">Are SHAP & LIME Faithful on Foundation Models?</div><div class="project-stack">TabPFN · SHAP · LIME · Explainable AI Research · NTU</div></div><span class="project-arrow">↗</span></div>
-      <div class="project-metrics">
-        <span class="metric-pill">Infidelity 0.016</span>
-        <span class="metric-pill amber">Spearman ρ = 0.47</span>
-        <span class="metric-pill red">LIME ρ = −0.06</span>
-        <span class="metric-pill blue">TabPFN 90% acc</span>
-      </div>
-      <div class="pari">
-        <div><div class="pari-label">Problem</div><div class="pari-text">SHAP assumes fixed model weights. TabPFN uses in-context learning — when SHAP masks a feature, attention shifts silently. Are explanations still meaningful?</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">Measured Infidelity, Sufficiency and Spearman ρ against XGBoost-TreeSHAP (exact Shapley reference). Three explainers + an intrinsic finite-difference sensitivity probe.</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text">SHAP is locally faithful (ρ=0.47). <strong>LIME is noise (ρ=−0.06). Intrinsic probe is negatively correlated (ρ=−0.35)</strong> — the two models learned entirely different decision boundaries.</div></div>
-        <div><div class="pari-label">Insight</div><div class="pari-text">Post-hoc tools can be locally consistent <em>and still miss the model's actual reasoning</em>. "Faithful" only means something relative to what you're comparing against.</div></div>
-      </div>
-    </a>
-  </div>
-
+    <!-- RAG -->
     <a class="project-card reveal" href="https://github.com/AdvaithK500/agentic-rag" target="_blank">
-      <div class="project-top"><div><div class="project-name">Agentic RAG Pipeline with Security Hardening</div><div class="project-stack">Python · BM25 · ReAct Agent · Prompt Injection Detection · Flask API</div></div><span class="project-arrow">↗</span></div>
+      <div class="project-top">
+        <div>
+          <div class="project-summary">Production RAG with OWASP LLM Top 10 #1 defence</div>
+          <div class="project-name">Agentic RAG Pipeline with Security Hardening</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
       <div class="project-metrics">
         <span class="metric-pill">MRR 1.000</span>
         <span class="metric-pill amber">Injection F1 0.909</span>
-        <span class="metric-pill blue">0 false positives</span>
-        <span class="metric-pill red">OWASP LLM Top 10 #1</span>
+        <span class="metric-pill blue">Precision 1.000 · 0 false positives</span>
+        <span class="metric-pill purple">ReAct · BM25 · Flask API</span>
       </div>
       <div class="pari">
-        <div><div class="pari-label">Problem</div><div class="pari-text">LLM-integrated apps are vulnerable to prompt injection — attackers embed malicious instructions in queries or retrieved documents. Most RAG systems have no defence layer.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">BM25 retrieval (3 chunking strategies) + <strong>ReAct agentic loop</strong> with tool use + 3-layer injection defence: regex patterns, heuristic scoring (instruction density, entropy), indirect chunk screening. Flask REST API for deployment.</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text">Retrieval MRR=1.000 across all chunking strategies. <strong>Injection detector: Precision=1.000, Recall=0.833, F1=0.909</strong> — zero false positives, blocks all high-confidence attacks.</div></div>
-        <div><div class="pari-label">Insight</div><div class="pari-text">Indirect injection (malicious content in retrieved documents) is harder to detect than direct injection — it requires screening every chunk before it enters the context window, not just the user query.</div></div>
+        <div><div class="pari-label">Problem</div><div class="pari-text">Prompt injection (OWASP LLM #1) affects most RAG systems: attackers embed instructions in queries or retrieved documents. Most pipelines have no defence layer at all.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">BM25 retrieval (3 chunking strategies: fixed/paragraph/sentence) + <strong>ReAct agentic loop</strong> with tool use (retrieve, calculate, summarise) + 3-layer injection defence: 20+ regex patterns → heuristic scoring (instruction density, entropy) → indirect chunk screening. Deployed via Flask REST API.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text">Retrieval MRR=1.000 across all strategies. <strong>Injection detector: Precision=1.000, Recall=0.833, F1=0.909</strong> — zero false positives, blocks all high-confidence attacks. Connect any LLM via a single callback.</div></div>
+        <div><div class="pari-label">What I learned</div><div class="pari-text">Indirect injection (malicious content in retrieved documents) is harder to catch than direct injection — it requires screening every chunk before it enters the context window, not just the user's input. The defence layer must be part of the retrieval pipeline, not bolted on after.</div></div>
       </div>
     </a>
+
   </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-header reveal"><span class="sec-num">03 /</span><h2>Technical stack</h2><div class="sec-line"></div></div>
+    <div class="sec-header reveal"><span class="sec-num">04 /</span><h2>Technical depth</h2><div class="sec-line"></div></div>
     <div class="skills-grid reveal">
-      <div class="skill-group"><div class="skill-group-title">Languages</div><div class="skill-list"><span class="skill-pill">Python</span><span class="skill-pill">C</span><span class="skill-pill">C++</span><span class="skill-pill">MATLAB</span></div></div>
-      <div class="skill-group"><div class="skill-group-title">ML / AI</div><div class="skill-list"><span class="skill-pill">PyTorch</span><span class="skill-pill">scikit-learn</span><span class="skill-pill">NumPy</span><span class="skill-pill">SHAP</span><span class="skill-pill">TabPFN</span><span class="skill-pill">LangChain / RAG</span></div></div>
-      <div class="skill-group"><div class="skill-group-title">Embedded / Robotics</div><div class="skill-list"><span class="skill-pill">STM32 / HAL</span><span class="skill-pill">FreeRTOS</span><span class="skill-pill">ROS2</span><span class="skill-pill">Arduino</span><span class="skill-pill">I2C · UART · DMA</span></div></div>
-      <div class="skill-group"><div class="skill-group-title">Tools</div><div class="skill-list"><span class="skill-pill">Git</span><span class="skill-pill">STM32CubeIDE</span><span class="skill-pill">Jupyter</span><span class="skill-pill">Linux</span></div></div>
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-list">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">MATLAB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">ML Stack</div>
+        <div class="skill-list">
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">scikit-learn</span>
+          <span class="skill-pill">NumPy · SciPy</span>
+          <span class="skill-pill">SHAP · TabPFN</span>
+          <span class="skill-pill">LangChain / RAG</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Systems & Embedded</div>
+        <div class="skill-list">
+          <span class="skill-pill">STM32 / HAL</span>
+          <span class="skill-pill">FreeRTOS</span>
+          <span class="skill-pill">ROS2</span>
+          <span class="skill-pill">Arduino</span>
+          <span class="skill-pill">I2C · UART · DMA</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Tools</div>
+        <div class="skill-list">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Linux</span>
+          <span class="skill-pill">Jupyter</span>
+          <span class="skill-pill">Flask</span>
+          <span class="skill-pill">OpenCV</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- CURRENTLY EXPLORING -->
+<section id="exploring">
+  <div class="wrap">
+    <div class="sec-header reveal"><span class="sec-num">05 /</span><h2>Currently exploring</h2><div class="sec-line"></div></div>
+    <div class="exploring-grid reveal">
+      <div class="explore-item">
+        <div class="explore-num">01</div>
+        <div class="explore-title">Attention-based intrinsic explanations</div>
+        <div class="explore-body">PyTorch forward hooks to extract genuine internal signals from transformer models — instead of finite-difference approximations.</div>
+      </div>
+      <div class="explore-item">
+        <div class="explore-num">02</div>
+        <div class="explore-title">On-device ML with Arduino BLE Sense 33</div>
+        <div class="explore-body">MFCC pipeline → 1D CNN on the LSM9DS1 IMU. Training offline, deploying via Edge Impulse TFLite runtime.</div>
+      </div>
+      <div class="explore-item">
+        <div class="explore-num">03</div>
+        <div class="explore-title">Privacy in in-context learning</div>
+        <div class="explore-body">Membership inference attacks on ICL models. Classical DP-SGD doesn't apply — studying output perturbation and private context selection via MPC.</div>
+      </div>
+      <div class="explore-item">
+        <div class="explore-num">04</div>
+        <div class="explore-title">Sensor fusion for underwater robotics</div>
+        <div class="explore-body">Extending the EKF work to depth-rated sensor suites — pressure, DVL, sonar — relevant to HAUV navigation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
-    <div class="sec-header reveal"><span class="sec-num">04 /</span><h2>Let's talk</h2><div class="sec-line"></div></div>
-    <p class="reveal" style="color:var(--dim);font-size:15px;max-width:480px;margin-bottom:1.75rem;line-height:1.8;">Looking for a May–July 2026 internship in embedded ML, robotics, or applied AI. Fastest response via email.</p>
+    <div class="sec-header reveal"><span class="sec-num">06 /</span><h2>Let's talk</h2><div class="sec-line"></div></div>
+    <p class="reveal" style="color:var(--dim);font-size:15px;max-width:480px;margin-bottom:1.75rem;line-height:1.8;">
+      Looking for a May–July 2026 internship in embedded ML, robotics, or applied AI.
+      I respond fastest to email.
+    </p>
     <div class="contact-row reveal">
       <a class="contact-link" href="mailto:advaith001@e.ntu.edu.sg">✉ advaith001@e.ntu.edu.sg</a>
       <a class="contact-link" href="https://github.com/AdvaithK500" target="_blank">⌥ github/AdvaithK500</a>
-      <a class="contact-link" href="https://linkedin.com/in/advaith-kumar-13b117254" target="_blank">in advaith-kumar-13b117254</a>
+      <a class="contact-link" href="https://linkedin.com/in/advaith-kumar-13b117254" target="_blank">in advaith-kumar</a>
     </div>
   </div>
 </section>
@@ -259,10 +437,10 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
 <footer><div class="wrap">advaith kumar · advaithk500.github.io · 2026</div></footer>
 
 <script>
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, {threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
