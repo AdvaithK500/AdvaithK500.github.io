@@ -303,13 +303,14 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
       <div class="project-metrics">
         <span class="metric-pill">CNN 96.5% · GRU 95.8%</span>
         <span class="metric-pill amber">258-dim MFCC features</span>
+        <span class="metric-pill purple">Conditional LSTM-GAN</span>
         <span class="metric-pill blue">42k params · ~165 KB</span>
         <span class="metric-pill red">az channel importance 0.270</span>
       </div>
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Classify 6 activities from raw 6-axis IMU windows in real time, on a microcontroller with 256 KB SRAM. Need both accuracy and efficiency.</div></div>
-        <div><div class="pari-label">Approach</div><div class="pari-text">MFCC-inspired filterbank pipeline: Hanning window → FFT → 12-band linear filterbank → log energy + delta + DCT cepstral coefficients = 258-dim feature vector. Three deep architectures: <strong>CNN1D</strong> (42k), <strong>BiLSTM</strong> (99k), <strong>GRU</strong> (74k). Feature importance heatmap shows az (vertical accel) dominates at importance 0.270.</div></div>
-        <div><div class="pari-label">Result</div><div class="pari-text">CNN1D wins on efficiency: <strong>96.5% at 42k params</strong> vs BiLSTM 95.2% at 99k. RF baseline 100% on clean synthetic data. CNN fits on-device after int8 quantisation (~11 KB). Walking (2 Hz) and running (3 Hz) separated cleanly by filterbank.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">MFCC-inspired filterbank pipeline (Hanning → FFT → 12-band filterbank → DCT): Hanning window → FFT → 12-band linear filterbank → log energy + delta + DCT cepstral coefficients = 258-dim feature vector. Three deep architectures + conditional <strong>LSTM-GAN</strong> for augmentation: <strong>CNN1D</strong> (42k), <strong>BiLSTM</strong> (99k), <strong>GRU</strong> (74k). Feature importance heatmap shows az (vertical accel) dominates at importance 0.270.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text">CNN1D wins on efficiency: <strong>96.5% at 42k params</strong> vs BiLSTM 95.2% at 99k. Conditional LSTM-GAN augmentation: <strong>+3.1% gain</strong> at 3% training data. CNN fits on-device after int8 quantisation (~11 KB). Walking (2 Hz) and running (3 Hz) separated cleanly by filterbank.</div></div>
         <div><div class="pari-label">What I learned</div><div class="pari-text">MFCC was designed for speech but transfers directly to IMU data — both are fixed-rate signals with energy in frequency bands. Global Average Pooling halves parameter count vs Flatten with no accuracy loss, forcing conv layers to learn genuinely useful temporal features.</div></div>
       </div>
     </a>
@@ -337,6 +338,28 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
       </div>
     </a>
 
+
+    <a class="project-card reveal" href="https://github.com/AdvaithK500/federated-learning-dp" target="_blank">
+      <div class="project-top">
+        <div>
+          <div class="project-summary">Privacy-preserving ML — quantifying the privacy-utility tradeoff</div>
+          <div class="project-name">Federated Learning + Differential Privacy</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+      <div class="project-metrics">
+        <span class="metric-pill">MIA AUC 0.543→0.510</span>
+        <span class="metric-pill amber">ε=1.0 DP guarantee</span>
+        <span class="metric-pill blue">FedAvg · 5 clients</span>
+        <span class="metric-pill red">PDPA + NIST AI RMF</span>
+      </div>
+      <div class="pari">
+        <div><div class="pari-label">Problem</div><div class="pari-text">Classical ML leaks training data through membership inference attacks. Standard DP-SGD doesn't apply to federated settings — the training set is distributed across private clients.</div></div>
+        <div><div class="pari-label">Approach</div><div class="pari-text">FedAvg across 5 virtual clients with (ε, δ)-DP via Gaussian mechanism: clip local updates to L2 norm C, add calibrated noise σ = C·sqrt(2·ln(1.25/δ))/ε before aggregation. Shadow-model membership inference attack to quantify leakage.</div></div>
+        <div><div class="pari-label">Result</div><div class="pari-text">DP-FedAvg reduces membership inference AUC from <strong>0.543 → 0.510</strong> (near-random = near-perfect privacy resistance) at ε=1.0. Privacy-utility cost explicitly quantified: 37.9% accuracy drop — a concrete number for Privacy Impact Assessments.</div></div>
+        <div><div class="pari-label">What I learned</div><div class="pari-text"><strong>FL without DP is actually more vulnerable than centralised training</strong> — clients overfit to local shards, increasing membership inference risk. DP noise is essential, not optional, in federated deployments. Mapped to PDPA Sections 18, 24, 26 and NIST AI RMF controls.</div></div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -361,7 +384,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
           <span class="skill-pill">scikit-learn</span>
           <span class="skill-pill">NumPy · SciPy</span>
           <span class="skill-pill">SHAP · TabPFN</span>
-          <span class="skill-pill">LangChain</span><span class="skill-pill">LLM API (Claude, GPT-4)</span>
+          <span class="skill-pill">LangChain</span><span class="skill-pill">LLM API (Claude, GPT-4)</span><span class="skill-pill">Federated Learning</span><span class="skill-pill">Differential Privacy</span>
         </div>
       </div>
       <div class="skill-group">
@@ -411,6 +434,11 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
       </div>
       <div class="explore-item">
         <div class="explore-num">04</div>
+        <div class="explore-title">Privacy-preserving FL at scale</div>
+        <div class="explore-body">Extending DP-FedAvg with secure aggregation via MPC — the next step after the membership inference study.</div>
+      </div>
+      <div class="explore-item">
+        <div class="explore-num">05</div>
         <div class="explore-title">Sensor fusion for underwater robotics</div>
         <div class="explore-body">Extending the EKF work to depth-rated sensor suites — pressure, DVL, sonar — relevant to HAUV navigation.</div>
       </div>
