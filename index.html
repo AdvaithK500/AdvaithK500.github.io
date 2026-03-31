@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kumar — Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0d0f0e;
+    --surface:  #141614;
+    --border:   #232623;
+    --muted:    #3d4a3e;
+    --dim:      #6b7c6c;
+    --body:     #b8c9b9;
+    --head:     #e8f0e9;
+    --accent:   #7ecf82;
+    --accent2:  #4a9e6b;
+    --red:      #e07070;
+    --amber:    #d4a84b;
+    --blue:     #6ea8d4;
+
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+
+    --r: 6px;
+    --gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 var(--gap); }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,14,.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 0;
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    text-decoration: none; letter-spacing: .04em;
+  }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 12px; color: var(--dim);
+    text-decoration: none; letter-spacing: .06em; text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── Hero ── */
+  #hero {
+    padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-label {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: .14em; text-transform: uppercase; margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .hero-label::before {
+    content: ''; display: block; width: 24px; height: 1px; background: var(--accent);
+  }
+  h1 {
+    font-family: var(--sans); font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 300; color: var(--head); line-height: 1.15;
+    letter-spacing: -.02em; margin-bottom: 1.5rem;
+  }
+  h1 strong { font-weight: 500; color: var(--accent); }
+  .hero-desc {
+    max-width: 560px; color: var(--dim); font-size: 16px; line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2.5rem; }
+  .tag {
+    font-family: var(--mono); font-size: 11px; padding: .3rem .7rem;
+    border: 1px solid var(--border); border-radius: var(--r);
+    color: var(--dim); background: var(--surface); letter-spacing: .04em;
+    transition: border-color .2s, color .2s;
+  }
+  .tag:hover { border-color: var(--muted); color: var(--body); }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .06em;
+    text-transform: uppercase; padding: .6rem 1.2rem;
+    border-radius: var(--r); text-decoration: none;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .btn-primary {
+    background: var(--accent); color: var(--bg); border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #9adfa0; border-color: #9adfa0; }
+  .btn-outline {
+    background: transparent; color: var(--body); border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--muted); color: var(--head); }
+
+  /* ── Sections ── */
+  section { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--border); }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .section-num {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: .1em;
+  }
+  h2 {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 500;
+    color: var(--head); letter-spacing: -.01em;
+  }
+
+  /* ── Projects grid ── */
+  .projects { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .project-card {
+    background: var(--surface); padding: 1.75rem;
+    transition: background .2s;
+    text-decoration: none; display: block; color: inherit;
+  }
+  .project-card:hover { background: #181c18; }
+  .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .75rem; }
+  .project-name {
+    font-size: 15px; font-weight: 500; color: var(--head);
+    margin-bottom: .2rem;
+  }
+  .project-sub {
+    font-family: var(--mono); font-size: 11px; color: var(--accent2);
+    letter-spacing: .04em;
+  }
+  .project-arrow {
+    font-size: 18px; color: var(--muted); transition: color .2s, transform .2s;
+    flex-shrink: 0; margin-left: 1rem; margin-top: .1rem;
+  }
+  .project-card:hover .project-arrow { color: var(--accent); transform: translate(3px,-3px); }
+  .project-desc {
+    color: var(--dim); font-size: 14px; line-height: 1.65; margin-bottom: 1rem;
+  }
+  .project-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .meta-item {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    display: flex; align-items: center; gap: .35rem;
+  }
+  .meta-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .meta-dot.red { background: var(--red); }
+  .meta-dot.amber { background: var(--amber); }
+  .meta-dot.blue { background: var(--blue); }
+
+  /* ── Stats row ── */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 2.5rem; }
+  .stat-cell {
+    background: var(--surface); padding: 1.25rem 1.5rem;
+  }
+  .stat-value {
+    font-family: var(--mono); font-size: 1.6rem; font-weight: 500;
+    color: var(--accent); letter-spacing: -.02em; line-height: 1;
+    margin-bottom: .3rem;
+  }
+  .stat-label {
+    font-family: var(--mono); font-size: 11px; color: var(--dim);
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+
+  /* ── Skills ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .skill-group {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 1.25rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: .1em; text-transform: uppercase; margin-bottom: .85rem;
+  }
+  .skill-list { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .skill-pill {
+    font-family: var(--mono); font-size: 11px; color: var(--body);
+    background: rgba(126,207,130,.07); border: 1px solid rgba(126,207,130,.18);
+    border-radius: 4px; padding: .2rem .55rem; letter-spacing: .02em;
+  }
+
+  /* ── Experience ── */
+  .exp-item { margin-bottom: 2rem; }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; margin-bottom: .35rem; }
+  .exp-role { font-size: 15px; font-weight: 500; color: var(--head); }
+  .exp-period { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .exp-company { font-family: var(--mono); font-size: 12px; color: var(--accent2); margin-bottom: .5rem; }
+  .exp-desc { color: var(--dim); font-size: 14px; line-height: 1.65; }
+  .exp-divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  /* ── Contact ── */
+  .contact-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: .5rem;
+    font-family: var(--mono); font-size: 12px; color: var(--dim);
+    text-decoration: none; padding: .6rem 1rem;
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--surface); transition: border-color .2s, color .2s;
+    letter-spacing: .04em;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-icon { font-size: 14px; }
+
+  /* ── Footer ── */
+  footer {
+    padding: 2rem 0; text-align: center;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    letter-spacing: .06em;
+  }
+
+  /* ── Fade-in animation ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade { opacity: 0; animation: fadeUp .6s ease forwards; }
+  .fade-1 { animation-delay: .1s; }
+  .fade-2 { animation-delay: .22s; }
+  .fade-3 { animation-delay: .34s; }
+  .fade-4 { animation-delay: .46s; }
+  .fade-5 { animation-delay: .58s; }
+
+  /* ── Cursor blink ── */
+  .blink {
+    display: inline-block; width: 2px; height: 1.1em;
+    background: var(--accent); vertical-align: middle;
+    animation: blink 1.1s step-end infinite;
+    margin-left: 3px;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-cta { flex-direction: column; }
+    .btn { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="nav-brand" href="#">~/kumar</a>
+    <ul class="nav-links">
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-label fade fade-1">Computer Engineering · NTU Singapore · Year 3</div>
+    <h1 class="fade fade-2">
+      Building systems that<br>
+      <strong>sense, reason, and move</strong><span class="blink"></span>
+    </h1>
+    <p class="hero-desc fade fade-3">
+      I work at the intersection of embedded systems, robotics, and machine learning —
+      from bare-metal STM32 firmware and sensor fusion to PyTorch models and
+      explainable AI research.
+    </p>
+    <div class="hero-tags fade fade-4">
+      <span class="tag">C / C++</span>
+      <span class="tag">Python</span>
+      <span class="tag">FreeRTOS</span>
+      <span class="tag">PyTorch</span>
+      <span class="tag">ROS</span>
+      <span class="tag">Sensor Fusion</span>
+      <span class="tag">STM32</span>
+      <span class="tag">Extended Kalman Filter</span>
+      <span class="tag">Explainable AI</span>
+    </div>
+    <div class="hero-cta fade fade-5">
+      <a class="btn btn-primary" href="https://github.com/AdvaithK500" target="_blank">GitHub ↗</a>
+      <a class="btn btn-outline" href="#projects">View projects</a>
+      <a class="btn btn-outline" href="resume.pdf" target="_blank">Resume PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="section-num">01 /</span>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="projects">
+
+      <!-- MDP Robot -->
+      <a class="project-card" href="https://github.com/AdvaithK500/mdp-autonomous-robot" target="_blank">
+        <div class="project-top">
+          <div>
+            <div class="project-name">NTU MDP Autonomous Robot</div>
+            <div class="project-sub">STM32F4 · FreeRTOS · Sensor Fusion · Embedded C</div>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">
+          Fully autonomous maze-navigating robot. Wrote the entire STM32 firmware layer —
+          9 concurrent FreeRTOS tasks coordinating ICM20948 IMU, dual quadrature encoders,
+          HC-SR04 ultrasonic, IR sensors, PID motor control and UART-DMA bridge to Raspberry Pi.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item"><span class="meta-dot red"></span>C / C++</span>
+          <span class="meta-item"><span class="meta-dot"></span>FreeRTOS</span>
+          <span class="meta-item"><span class="meta-dot amber"></span>ICM20948 · HC-SR04 · Encoders</span>
+        </div>
+      </a>
+
+      <!-- EKF -->
+      <a class="project-card" href="https://github.com/AdvaithK500/ekf-sensor-fusion" target="_blank">
+        <div class="project-top">
+          <div>
+            <div class="project-name">EKF Sensor Fusion</div>
+            <div class="project-sub">Extended Kalman Filter · Python · Robotics</div>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">
+          Python implementation of an Extended Kalman Filter for 2-D robot pose estimation,
+          fusing IMU, wheel encoders and ultrasonic — using the exact hardware specs from the
+          MDP robot. EKF achieves 2.0 cm RMSE vs 5.9 cm for dead reckoning alone (+66%).
+        </p>
+        <div class="project-meta">
+          <span class="meta-item"><span class="meta-dot"></span>Python · NumPy</span>
+          <span class="meta-item"><span class="meta-dot red"></span>RMSE 2.0 cm</span>
+          <span class="meta-item"><span class="meta-dot amber"></span>+66% vs dead reckoning</span>
+        </div>
+      </a>
+
+      <!-- Time series -->
+      <a class="project-card" href="https://github.com/AdvaithK500/time-series-classifier" target="_blank">
+        <div class="project-top">
+          <div>
+            <div class="project-name">1-D CNN Time-Series Classifier</div>
+            <div class="project-sub">PyTorch · HAR · Edge ML · Arduino BLE Sense 33</div>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">
+          Lightweight CNN (42k params) for classifying 6-axis IMU windows into 6 activity
+          classes at 50 Hz. Full PyTorch training pipeline with AdamW, cosine LR and early
+          stopping. Exports via TorchScript for on-device inference on Arduino Nano BLE Sense 33.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item"><span class="meta-dot"></span>PyTorch</span>
+          <span class="meta-item"><span class="meta-dot amber"></span>42k params · ~165 KB</span>
+          <span class="meta-item"><span class="meta-dot blue"></span>6-class HAR</span>
+        </div>
+      </a>
+
+      <!-- xAI study -->
+      <a class="project-card" href="https://github.com/AdvaithK500/tabpfn-xai-study" target="_blank">
+        <div class="project-top">
+          <div>
+            <div class="project-name">XAI Faithfulness on Tabular Foundation Models</div>
+            <div class="project-sub">TabPFN · SHAP · LIME · Explainable AI Research</div>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">
+          Empirical study of whether SHAP and LIME produce faithful explanations on TabPFN —
+          a transformer using in-context learning. Measured Infidelity, Sufficiency and Spearman
+          rank correlation. Key finding: post-hoc tools can be locally consistent while still
+          missing the model's actual reasoning.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item"><span class="meta-dot"></span>Python · TabPFN</span>
+          <span class="meta-item"><span class="meta-dot red"></span>SHAP · LIME</span>
+          <span class="meta-item"><span class="meta-dot blue"></span>Research · NTU</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="section-num">02 /</span>
+      <h2>Skills</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat-cell">
+        <div class="stat-value">4</div>
+        <div class="stat-label">GitHub repos</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">9</div>
+        <div class="stat-label">FreeRTOS tasks</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">66%</div>
+        <div class="stat-label">EKF improvement</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">42k</div>
+        <div class="stat-label">CNN parameters</div>
+      </div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-list">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">MATLAB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">ML / AI</div>
+        <div class="skill-list">
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">scikit-learn</span>
+          <span class="skill-pill">NumPy</span>
+          <span class="skill-pill">Pandas</span>
+          <span class="skill-pill">SHAP</span>
+          <span class="skill-pill">TabPFN</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Embedded / Robotics</div>
+        <div class="skill-list">
+          <span class="skill-pill">STM32</span>
+          <span class="skill-pill">FreeRTOS</span>
+          <span class="skill-pill">ROS / ROS2</span>
+          <span class="skill-pill">Arduino</span>
+          <span class="skill-pill">I2C · UART · SPI</span>
+          <span class="skill-pill">PWM · DMA</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Tools</div>
+        <div class="skill-list">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">STM32CubeIDE</span>
+          <span class="skill-pill">Jupyter</span>
+          <span class="skill-pill">Linux</span>
+          <span class="skill-pill">Matplotlib</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="section-num">03 /</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">AI Research Intern</span>
+        <span class="exp-period">2025</span>
+      </div>
+      <div class="exp-company">Lexsi Labs</div>
+      <p class="exp-desc">
+        Designed and ran an empirical faithfulness study comparing post-hoc explainers (SHAP, LIME)
+        against an intrinsic sensitivity probe on TabPFN — a tabular foundation model using in-context
+        learning. Quantified explanation fidelity using Infidelity, Sufficiency and Spearman rank
+        correlation metrics. Delivered findings as a structured technical report.
+      </p>
+    </div>
+
+    <hr class="exp-divider">
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Embedded Systems Engineer</span>
+        <span class="exp-period">2024 – 2025</span>
+      </div>
+      <div class="exp-company">NTU CZ3004 MDP — Academic Project</div>
+      <p class="exp-desc">
+        Sole firmware author for an autonomous maze-solving robot. Built 9-task FreeRTOS
+        application on STM32F4: IMU-corrected navigation, encoder odometry, PID motor control,
+        DMA-buffered UART bridge, and ultrasonic obstacle detection. Robot operated reliably over
+        repeated 10×10 grid runs with sub-centimetre alignment.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="section-num">04 /</span>
+      <h2>Contact</h2>
+    </div>
+    <p style="color:var(--dim);font-size:15px;margin-bottom:1.5rem;max-width:480px;">
+      Open to internship opportunities for May–July 2026.
+      Fastest response via email.
+    </p>
+    <div class="contact-row">
+      <a class="contact-link" href="mailto:YOUR_EMAIL@e.ntu.edu.sg">
+        <span class="contact-icon">✉</span> YOUR_EMAIL@e.ntu.edu.sg
+      </a>
+      <a class="contact-link" href="https://github.com/AdvaithK500" target="_blank">
+        <span class="contact-icon">⌥</span> github/AdvaithK500
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">
+        <span class="contact-icon">in</span> linkedin/YOUR_LINKEDIN
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    built with HTML · hosted on GitHub Pages · kumar © 2026
+  </div>
+</footer>
+
+</body>
+</html>

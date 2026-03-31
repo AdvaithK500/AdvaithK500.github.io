@@ -1,0 +1,14 @@
+# Portfolio site — deployed via GitHub Pages
+# Repo: AdvaithK500/AdvaithK500.github.io  (or any repo with Pages enabled)
+
+# To deploy:
+#   1. Create repo named AdvaithK500.github.io on GitHub
+#   2. git init && git add . && git commit -m "init portfolio"
+#   3. git remote add origin https://github.com/AdvaithK500/AdvaithK500.github.io
+#   4. git push -u origin main
+#   Your site will be live at https://AdvaithK500.github.io within 2 minutes.
+#
+# OR enable Pages on any repo:
+#   Settings → Pages → Source: Deploy from branch → main / root
+
+theme: null
