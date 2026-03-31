@@ -217,6 +217,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
         <span class="metric-pill amber">Intrinsic probe ρ = −0.350</span>
         <span class="metric-pill blue">TabPFN acc 90% vs XGB 86.7%</span>
       </div>
+      <img src="https://raw.githubusercontent.com/AdvaithK500/tabpfn-xai-study/main/spearman_interpretation.png" alt="Spearman rho interpretation — SHAP vs LIME vs intrinsic probe" style="width:100%;border-radius:8px;margin-top:14px;border:0.5px solid var(--border);display:block;" loading="lazy">
       <div class="flagship-pari">
         <div>
           <div class="pari-label">Problem</div>
@@ -283,6 +284,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
         <span class="metric-pill blue">4 fault types detected</span>
         <span class="metric-pill red">Welch PSD · SNR 38 dB</span>
       </div>
+        <img src="https://raw.githubusercontent.com/AdvaithK500/ekf-sensor-fusion/main/trajectory.png" alt="EKF vs dead reckoning trajectory comparison" style="width:100%;border-radius:8px;margin-top:14px;border:0.5px solid var(--border);display:block;" loading="lazy">
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Dead reckoning drifts to 6 cm error over 27 seconds — each turn compounds heading error into position error. Sensors also fail silently: bias drift, EMI spikes, flatlines.</div></div>
         <div><div class="pari-label">Approach</div><div class="pari-text">EKF with arc-based differential-drive kinematics, 100 Hz gyro correction, 20 Hz ultrasonic updates with <strong>3σ outlier gating</strong>. Added online anomaly time-series anomaly detector (spike/drift/flatline/noise burst) using rolling z-score and local drift comparison. Welch PSD spectral analysis with Hanning/Blackman/rectangular window comparison.</div></div>
@@ -307,6 +309,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
         <span class="metric-pill blue">42k params · ~165 KB</span>
         <span class="metric-pill red">az channel importance 0.270</span>
       </div>
+        <img src="https://raw.githubusercontent.com/AdvaithK500/time-series-classifier/main/feature_importance_heatmap.png" alt="Feature importance heatmap" style="width:100%;border-radius:8px;margin-top:14px;border:0.5px solid var(--border);display:block;" loading="lazy">
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Classify 6 activities from raw 6-axis IMU windows in real time, on a microcontroller with 256 KB SRAM. Need both accuracy and efficiency.</div></div>
         <div><div class="pari-label">Approach</div><div class="pari-text">MFCC-inspired filterbank pipeline (Hanning → FFT → 12-band filterbank → DCT): Hanning window → FFT → 12-band linear filterbank → log energy + delta + DCT cepstral coefficients = 258-dim feature vector. Three deep architectures + conditional <strong>LSTM-GAN</strong> for augmentation: <strong>CNN1D</strong> (42k), <strong>BiLSTM</strong> (99k), <strong>GRU</strong> (74k). Feature importance heatmap shows az (vertical accel) dominates at importance 0.270.</div></div>
@@ -330,6 +333,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
         <span class="metric-pill blue">Precision 1.000 · 0 false positives</span>
         <span class="metric-pill purple">ReAct · BM25 · Flask API</span>
       </div>
+        <img src="https://raw.githubusercontent.com/AdvaithK500/agentic-rag/main/rag_evaluation.png" alt="Retrieval benchmark and injection detection results" style="width:100%;border-radius:8px;margin-top:14px;border:0.5px solid var(--border);display:block;" loading="lazy">
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Prompt injection (OWASP LLM #1) affects most RAG systems: attackers embed instructions in queries or retrieved documents. Most pipelines have no defence layer at all.</div></div>
         <div><div class="pari-label">Approach</div><div class="pari-text"><strong>End-to-end data pipeline:</strong> BM25 retrieval (3 chunking strategies) + <strong>ReAct agentic loop</strong> with tool use (retrieve, calculate, summarise) + 3-layer injection defence: 20+ regex patterns → heuristic scoring (instruction density, entropy) → indirect chunk screening. Deployed via Flask REST API.</div></div>
@@ -353,6 +357,7 @@ footer{padding:2rem 0;text-align:center;font-family:var(--mono);font-size:11px;c
         <span class="metric-pill blue">FedAvg · 5 clients</span>
         <span class="metric-pill red">PDPA + NIST AI RMF</span>
       </div>
+        <img src="https://raw.githubusercontent.com/AdvaithK500/federated-learning-dp/main/privacy_utility_tradeoff.png" alt="Privacy-utility tradeoff: centralised vs FL vs DP-FedAvg" style="width:100%;border-radius:8px;margin-top:14px;border:0.5px solid var(--border);display:block;" loading="lazy">
       <div class="pari">
         <div><div class="pari-label">Problem</div><div class="pari-text">Classical ML leaks training data through membership inference attacks. Standard DP-SGD doesn't apply to federated settings — the training set is distributed across private clients.</div></div>
         <div><div class="pari-label">Approach</div><div class="pari-text">FedAvg across 5 virtual clients with (ε, δ)-DP via Gaussian mechanism: clip local updates to L2 norm C, add calibrated noise σ = C·sqrt(2·ln(1.25/δ))/ε before aggregation. Shadow-model membership inference attack to quantify leakage.</div></div>
